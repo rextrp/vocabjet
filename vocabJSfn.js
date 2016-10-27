@@ -133,8 +133,7 @@ function addToMyTable_part2(_actType){//actType 1=>存檔後回我的字庫 2=>�
 					if($("#editCaller").val()=="myvoc"){//非安裝包，從myvoc來的，回檢視字庫頁並更新table
 						go2Front('link2');	
 						upDateVocTbl('myvocOfst');//myvocOdr						
-					}else{//非安裝包，從todayVoc來的，只要刷新todayVoc頁面				
-						//chgDic2("ref/todayVoc.php", "", "", "0");
+					}else{//非安裝包，從todayVoc來的，只要刷新todayVoc頁面
 						$( "#vocEN" ).focus();
 					}
 					bldrReset();
@@ -158,7 +157,6 @@ function addToMyTable_part2(_actType){//actType 1=>存檔後回我的字庫 2=>�
 	if(isOKToAdd){	
 		if(_actType==2){//安裝包
 			vTmp[8] = '已審核';
-			//dicNewWindow.close();
 			editMove('down');
 		}
 		if(_actType==2 && vTmp[8]==""){//安裝包但未寫入tag
@@ -289,8 +287,7 @@ function bldrClearAll(){
 	$('#pkgCover').addClass('hidden');
 	doCookieSetup('orgEng', '');
 	document.getElementById('vjWindow').innerHTML ="";
-	$('#mydicTopTxt').text( "" );
-	//$('#vjWindow').removeClass('showYScroll');	
+	$('#mydicTopTxt').text( "" );	
 }
 function bldrReset(){
 	bldrClearAll();
@@ -328,7 +325,6 @@ function callPhpFn(fnName, fnPar, fnIfSuccess) {//執行指定的Ajax Fn
 		myUrl	=	'../vocabPHPfn.php';
 		fnName	=	fnName.substr(8, fnName.length);;
 	}
-//alert(fnName + ' & ' + myUrl);
 	$.ajax({
 		type : "POST",
 		url : myUrl,
@@ -341,8 +337,7 @@ function callPhpFn(fnName, fnPar, fnIfSuccess) {//執行指定的Ajax Fn
 			if(textStatus == 'timeout'){
 				alert('作業逾時，請按F5更新頁面: ' + textStatus);
 			}else{
-				alert('請按F5更新頁面:狀態： '+textStatus);
-				/*alert('請按F5更新頁面，狀態碼：'+jqXHR.status+);*/				
+				alert('請按F5更新頁面:狀態： '+textStatus);				
 			}
 			console.log(jqXHR);
 		},		
@@ -354,13 +349,11 @@ function callPhpFn(fnName, fnPar, fnIfSuccess) {//執行指定的Ajax Fn
 		},
 		complete : function (jqXHR, textStatus) {
 			$('#loader').addClass('hidden');
-			//console.log(jqXHR);
 		}
 		,timeout: 30000 // sets timeout to 30 seconds
 	});
 }
 function calcTime(offset) {			//utc時間切換成client時間//offset單位是小時
-//alert('offset=>'+offset);	
 	d = new Date();// create Date object for current location   
 	utc = d.getTime() + (d.getTimezoneOffset() * 60000);// convert to msec, add local time zone offsetand  get UTC time in msec
 	nd = new Date(utc + (3600000*offset));// create new Date object with supplied offset	
@@ -370,8 +363,7 @@ function calcTime(offset) {			//utc時間切換成client時間//offset單位是�
 	if(ndM<10){ ndM = '0'+ ndM; }	
 	ndD= nd.getDate();
 	if(ndD<10){ ndD = '0'+ ndD; }
-	var outputDstr= ndY + '-' + ndM + '-' + ndD;	
-//alert(outputDstr);
+	var outputDstr= ndY + '-' + ndM + '-' + ndD;
 	return outputDstr;
 }
 function clrBldrWhenSrch(){			//搜尋時英文無異動就不清除中文、音標等欄位
