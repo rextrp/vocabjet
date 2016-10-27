@@ -354,9 +354,9 @@ function callPhpFn(fnName, fnPar, fnIfSuccess) {//執行指定的Ajax Fn
 	});
 }
 function calcTime(offset) {			//utc時間切換成client時間//offset單位是小時
-	d = new Date();// create Date object for current location   
+	d = new Date();  
 	utc = d.getTime() + (d.getTimezoneOffset() * 60000);// convert to msec, add local time zone offsetand  get UTC time in msec
-	nd = new Date(utc + (3600000*offset));// create new Date object with supplied offset	
+	nd = new Date(utc + (3600000*offset));
 	//var newDstr = nd.toLocaleString();
 	ndY= nd.getFullYear();
 	ndM= (nd.getMonth())+1;
